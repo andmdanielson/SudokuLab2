@@ -11,6 +11,10 @@ public class LatinSquare {
 	 * @since Lab #1
 	 */
 	private int[][] LatinSquare;
+	//Begin variables for lab 2
+	private boolean bIgnoreZero;
+	
+	private java.util.ArrayList<PuzzleViolation> PV;
 
 	/**
 	 * No-arg constructor, make it public, don't do anything in the constructor
@@ -266,4 +270,26 @@ public class LatinSquare {
 	public void setLatinSquare(int[][] latinSquare) {
 		LatinSquare = latinSquare;
 	}
+	
+	//Begin methods for lab 2
+	protected void AddPuzzleViolation(PuzzleViolation pv) {
+		PV.add(pv);
+	}
+	
+	protected void ClearPuzzleViolation() {
+		PV.clear();
+	}
+	
+	protected java.util.ArrayList<PuzzleViolation> getPV(){
+		return PV;
+	}
+	
+	public boolean isbIgnoreZero() {
+		return bIgnoreZero;
+	}
+	
+	private int[] removeZeros(int[] array) {
+		
+	}
+	
 }
