@@ -2,6 +2,8 @@ package pkgHelper;
 
 import java.util.Arrays;
 
+import org.apache.commons.lang.ArrayUtils;
+
 public class LatinSquare {
 
 	/**
@@ -11,7 +13,9 @@ public class LatinSquare {
 	 * @since Lab #1
 	 */
 	private int[][] LatinSquare;
-	//Begin variables for lab 2
+	
+	//BEGIN VARIABLES FOR LAB 2
+	
 	private boolean bIgnoreZero;
 	
 	private java.util.ArrayList<PuzzleViolation> PV;
@@ -271,7 +275,8 @@ public class LatinSquare {
 		LatinSquare = latinSquare;
 	}
 	
-	//Begin methods for lab 2
+	//BEGIN METHODS FOR LAB 2
+	
 	protected void AddPuzzleViolation(PuzzleViolation pv) {
 		PV.add(pv);
 	}
@@ -288,8 +293,33 @@ public class LatinSquare {
 		return bIgnoreZero;
 	}
 	
-	private int[] removeZeros(int[] array) {
-		
+	protected void setbIgnoreZero(boolean ignoreZero) {
+		bIgnoreZero=ignoreZero;
 	}
+	
+	protected boolean hasDuplicates() {
+		int size=LatinSquare.length;
+		boolean duplicates=false;
+		for(int idx=0; idx<size; idx++) {
+			if(hasDuplicates(getRow(idx))==true) {
+				duplicates=true;
+				break;
+			}
+			if(hasDuplicates(getColumn(idx))==true) {
+				duplicates=true;
+				break;
+			}
+		}
+		return duplicates;
+	}
+	
+	private int[] removeZeros(int[] arr) {
+		int[] copiedArray = Arrays.copyOf(arr, arr.length);
+		while(ArrayUtils.contains(copiedArray, 0)) {
+			copiedArray=ArrayUtils.removeElement(copiedArray, 0);
+		}
+		return copiedArray;
+	}
+	
 	
 }

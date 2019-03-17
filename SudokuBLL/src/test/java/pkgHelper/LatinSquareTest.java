@@ -121,4 +121,19 @@ public class LatinSquareTest {
 		
 		assertFalse(LS.isLatinSquare());
 	}
+	
+	// Tests From Lab 2
+	@Test
+	public void hasDuplicates_test3() {
+		int[][] Puzzle= {{1,2,3},{2,3,1},{3,1,2}};
+		LatinSquare LS=new LatinSquare(Puzzle);
+		assertFalse(LS.hasDuplicates());
+	}
+	
+	@Test
+	public void hasDuplicates_test4() {
+		int[][] Puzzle= {{1,3,2},{2,3,1},{3,1,2}};
+		LatinSquare LS=new LatinSquare(Puzzle);
+		assertTrue(LS.hasDuplicates());
+	}
 }
