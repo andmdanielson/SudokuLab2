@@ -2,6 +2,8 @@ package pkgGame;
 
 import pkgHelper.LatinSquare;
 
+import org.apache.commons.lang.ArrayUtils;
+
 import java.util.Arrays;
 
 public class Sudoku extends LatinSquare{
@@ -40,8 +42,8 @@ public class Sudoku extends LatinSquare{
 	}
 	
 	public int[] getRegion(int iRegion) throws Exception {
-		if (iRegion+1>iSize) {
-			throw new Exception();
+		if ((iRegion+1>iSize)||(iRegion<0)) {
+			throw new Exception("Bad Region Call");
 		}
 		int[] region=new int[iSize];
 		int RowI=(iRegion/iSqrtSize)*iSqrtSize;
@@ -62,5 +64,39 @@ public class Sudoku extends LatinSquare{
 	public int[] getRegion(int iCol, int iRow) throws Exception {
 		int region=(iCol/iSqrtSize)+(iRow/iSqrtSize)*iSqrtSize;
 		return getRegion(region);
+	}
+	
+	public boolean isPartialSudoku() throws Exception {
+		boolean iPS=true;
+		if(ContainsZero()==false) {
+			iPS=false;
+			return iPS;
+		}
+		for(int idx=0; idx<iSize; idx++) {
+			int[] iRow=getRow(idx);
+			int[] iCol=getColumn(idx);
+			int[] iReg=getRegion(idx);
+			
+			
+			int[] iRow_n0=ArrayUtils.removeElement(Arrays.copyOf(iRow, iRow.length), 0);
+			int[] iCol_n0=ArrayUtils.removeElement(Arrays.copyOf(iCol, iCol.length), 0);
+			int[] iReg_n0=ArrayUtils.removeElement(Arrays.copyOf(iReg, iReg.length), 0);
+			
+			if(hasDuplicates(iRow_n0)==true) {
+				iPS=false;
+				break;
+			}
+			
+			if(hasDuplicates(iCol_n0)==true) {
+				iPS=false;
+				break;
+			}
+			
+			if(hasDuplicates(iReg_n0)==true) {
+				iPS=false;
+				break;
+			}
+		}
+		return iPS;
 	}
 }

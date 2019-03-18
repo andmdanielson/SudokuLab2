@@ -6,8 +6,5 @@ public enum ePuzzleViolation {
 	private ePuzzleViolation() {
 	}
 	
-	//static ePuzzleViolation valueOf(java.lang.String name) {
-		
-	//}
 
 }
