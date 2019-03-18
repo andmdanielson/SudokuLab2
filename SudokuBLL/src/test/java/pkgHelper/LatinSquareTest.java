@@ -1,5 +1,7 @@
 package pkgHelper;
 
+import pkgEnum.ePuzzleViolation;
+
 import static org.junit.Assert.*;
 
 import java.util.Arrays;
@@ -135,5 +137,13 @@ public class LatinSquareTest {
 		int[][] Puzzle= {{1,3,2},{2,3,1},{3,1,2}};
 		LatinSquare LS=new LatinSquare(Puzzle);
 		assertTrue(LS.hasDuplicates());
+	}
+	
+	@Test
+	public void ePuzzleViolationTest() {
+		ePuzzleViolation[] e=ePuzzleViolation.values();
+		ePuzzleViolation expected=e[1];
+		ePuzzleViolation actual=ePuzzleViolation.valueOf("DupCol");
+		assertEquals(expected, actual);
 	}
 }
