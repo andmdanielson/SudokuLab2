@@ -146,4 +146,11 @@ public class LatinSquareTest {
 		ePuzzleViolation actual=ePuzzleViolation.valueOf("DupCol");
 		assertEquals(expected, actual);
 	}
+	
+	@Test
+	public void removeZerosTest() {
+		int[][] MySquare = { { 1, 2, 3 }, { 3, 1, 2 }, { 4, 5, 6 } };
+		LatinSquare LS = new LatinSquare(MySquare);
+		
+	}
 }
