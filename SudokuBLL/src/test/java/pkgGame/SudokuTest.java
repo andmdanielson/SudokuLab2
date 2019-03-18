@@ -34,5 +34,13 @@ public class SudokuTest {
 		boolean actual=mySu.isPartialSudoku();
 		assertEquals(expected,actual);
 	}
+	
+	@Test
+	public void isPartialSudoku_test2() throws Exception {
+		Sudoku mySu=new Sudoku(sudoku);
+		boolean expected=false;
+		boolean actual=mySu.isPartialSudoku();
+		assertEquals(expected,actual);
+	}
 
 }
